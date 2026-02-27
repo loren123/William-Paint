@@ -2271,7 +2271,7 @@ def _make_tool_icon(tool_type, size=24):
     pm.fill(Qt.transparent)
     p = QPainter(pm)
     p.setRenderHint(QPainter.Antialiasing)
-    pen = QPen(QColor(40, 40, 40), 1.5)
+    pen = QPen(QColor(220, 220, 220), 1.5)
     p.setPen(pen)
     m = 3  # margin
 
@@ -2283,7 +2283,7 @@ def _make_tool_icon(tool_type, size=24):
         path = QPainterPath()
         path.moveTo(m, size - m)
         path.cubicTo(size * 0.3, size * 0.3, size * 0.6, size * 0.5, size - m, m)
-        p.setPen(QPen(QColor(40, 40, 40), 3, Qt.SolidLine, Qt.RoundCap))
+        p.setPen(QPen(QColor(220, 220, 220), 3, Qt.SolidLine, Qt.RoundCap))
         p.drawPath(path)
 
     elif tool_type == ToolType.ERASER:
@@ -2297,7 +2297,7 @@ def _make_tool_icon(tool_type, size=24):
             for col in range(2):
                 c = QColor(200, 200, 200) if (row + col) % 2 == 0 else QColor(255, 255, 255)
                 p.fillRect(m + col * sq, m + 2 + row * sq, sq, sq, c)
-        p.setPen(QPen(QColor(40, 40, 40), 1.5))
+        p.setPen(QPen(QColor(220, 220, 220), 1.5))
         p.setBrush(Qt.NoBrush)
         p.drawRect(m, m + 2, sq * 2, sq * 2)
         # Diagonal stroke through it
@@ -2305,7 +2305,7 @@ def _make_tool_icon(tool_type, size=24):
         p.drawLine(m + 2, size - m - 2, size - m - 2, m + 4)
 
     elif tool_type == ToolType.LINE:
-        p.setPen(QPen(QColor(40, 40, 40), 2))
+        p.setPen(QPen(QColor(220, 220, 220), 2))
         p.drawLine(m, size - m, size - m, m)
 
     elif tool_type == ToolType.RECTANGLE:
@@ -2330,8 +2330,8 @@ def _make_tool_icon(tool_type, size=24):
         body.lineTo(s * 0.65, s * 0.90)
         body.lineTo(s * 0.60, s * 0.35)
         body.closeSubpath()
-        p.setPen(QPen(QColor(40, 40, 40), 1.2))
-        p.setBrush(QBrush(QColor(180, 180, 180)))
+        p.setPen(QPen(QColor(220, 220, 220), 1.2))
+        p.setBrush(QBrush(QColor(200, 200, 200)))
         p.drawPath(body)
         # Paint fill inside bucket
         fill = QPainterPath()
@@ -2341,10 +2341,10 @@ def _make_tool_icon(tool_type, size=24):
         fill.lineTo(s * 0.58, s * 0.50)
         fill.closeSubpath()
         p.setPen(Qt.NoPen)
-        p.setBrush(QBrush(QColor(80, 150, 255)))
+        p.setBrush(QBrush(QColor(100, 170, 255)))
         p.drawPath(fill)
         # Handle arc
-        p.setPen(QPen(QColor(40, 40, 40), 1.5))
+        p.setPen(QPen(QColor(220, 220, 220), 1.5))
         p.setBrush(Qt.NoBrush)
         p.drawArc(QRectF(s * 0.25, s * 0.12, s * 0.30, s * 0.28), 30 * 16, 150 * 16)
         # Paint pouring from bucket rim
@@ -2353,20 +2353,20 @@ def _make_tool_icon(tool_type, size=24):
         pour.cubicTo(s * 0.75, s * 0.35, s * 0.85, s * 0.50, s * 0.78, s * 0.70)
         pour.cubicTo(s * 0.72, s * 0.80, s * 0.68, s * 0.82, s * 0.70, s * 0.88)
         p.setPen(Qt.NoPen)
-        p.setBrush(QBrush(QColor(80, 150, 255)))
+        p.setBrush(QBrush(QColor(100, 170, 255)))
         p.drawPath(pour)
 
     elif tool_type == ToolType.PICKER:
         # Eyedropper icon (diagonal pipette)
         s = size
-        p.setPen(QPen(QColor(40, 40, 40), 1.2))
+        p.setPen(QPen(QColor(220, 220, 220), 1.2))
         # Tip (pointed triangle at bottom-left)
         tip = QPainterPath()
         tip.moveTo(s * 0.10, s * 0.90)
         tip.lineTo(s * 0.22, s * 0.70)
         tip.lineTo(s * 0.30, s * 0.78)
         tip.closeSubpath()
-        p.setBrush(QBrush(QColor(60, 60, 60)))
+        p.setBrush(QBrush(QColor(180, 180, 180)))
         p.drawPath(tip)
         # Shaft (diagonal rectangle)
         shaft = QPainterPath()
@@ -2384,14 +2384,14 @@ def _make_tool_icon(tool_type, size=24):
         bulb.lineTo(s * 0.80, s * 0.35)
         bulb.lineTo(s * 0.63, s * 0.45)
         bulb.closeSubpath()
-        p.setBrush(QBrush(QColor(120, 120, 120)))
+        p.setBrush(QBrush(QColor(180, 180, 180)))
         p.drawPath(bulb)
         # Rubber squeeze top
         p.setBrush(QBrush(QColor(180, 80, 80)))
         p.drawEllipse(QPointF(s * 0.76, s * 0.22), s * 0.10, s * 0.08)
 
     elif tool_type == ToolType.SELECTION:
-        p.setPen(QPen(QColor(40, 40, 40), 1, Qt.DashLine))
+        p.setPen(QPen(QColor(220, 220, 220), 1, Qt.DashLine))
         p.setBrush(Qt.NoBrush)
         p.drawRect(m, m + 2, size - 2 * m, size - 2 * m - 2)
 
@@ -2408,15 +2408,15 @@ def _make_fill_mode_icon(mode, size=24):
     m = 4
     r = QRect(m, m, size - 2 * m, size - 2 * m)
     if mode == ShapeFillMode.OUTLINE:
-        p.setPen(QPen(QColor(40, 40, 40), 2))
+        p.setPen(QPen(QColor(220, 220, 220), 2))
         p.setBrush(Qt.NoBrush)
         p.drawRect(r)
     elif mode == ShapeFillMode.FILLED:
         p.setPen(Qt.NoPen)
-        p.setBrush(QBrush(QColor(100, 100, 100)))
+        p.setBrush(QBrush(QColor(180, 180, 180)))
         p.drawRect(r)
     else:  # BOTH
-        p.setPen(QPen(QColor(40, 40, 40), 2))
+        p.setPen(QPen(QColor(220, 220, 220), 2))
         p.setBrush(QBrush(QColor(180, 180, 180)))
         p.drawRect(r)
     p.end()
@@ -2429,7 +2429,7 @@ def _make_undo_icon(size=24):
     pm.fill(Qt.transparent)
     p = QPainter(pm)
     p.setRenderHint(QPainter.Antialiasing)
-    p.setPen(QPen(QColor(40, 40, 40), 2))
+    p.setPen(QPen(QColor(220, 220, 220), 2))
     path = QPainterPath()
     path.moveTo(6, 12)
     path.arcTo(QRectF(6, 6, 14, 12), 180, -180)
@@ -2447,7 +2447,7 @@ def _make_redo_icon(size=24):
     pm.fill(Qt.transparent)
     p = QPainter(pm)
     p.setRenderHint(QPainter.Antialiasing)
-    p.setPen(QPen(QColor(40, 40, 40), 2))
+    p.setPen(QPen(QColor(220, 220, 220), 2))
     path = QPainterPath()
     path.moveTo(18, 12)
     path.arcTo(QRectF(4, 6, 14, 12), 0, 180)

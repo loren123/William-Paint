@@ -2,6 +2,7 @@
 """Claude Paint — MS Paint clone built with Python + PyQt5."""
 
 import math
+import os
 import sys
 from collections import deque
 from enum import Enum, auto
@@ -27,7 +28,7 @@ from PyQt5.QtWidgets import (
 APP_NAME = "Claude Paint"
 DEFAULT_WIDTH = 800
 DEFAULT_HEIGHT = 600
-DEFAULT_DIR = "/home/william/Pictures"
+DEFAULT_DIR = os.path.expanduser("~/Pictures")
 MAX_UNDO = 50
 ZOOM_MIN = 0.25
 ZOOM_MAX = 64.0
@@ -3275,8 +3276,8 @@ class PaintApp(QMainWindow):
 # ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
-import logging
-_log_path = "/home/william/claude-paint/debug.log"
+import logging, os
+_log_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "debug.log")
 logging.basicConfig(filename=_log_path, level=logging.DEBUG,
                     format="%(asctime)s %(message)s", force=True)
 log = logging.getLogger("paint")

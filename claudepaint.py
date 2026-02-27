@@ -138,7 +138,8 @@ class PencilTool(BaseTool):
         self._last = event.pos()
         p = self.canvas.make_painter()
         color = self.canvas.fg_color if event.button() == Qt.LeftButton else self.canvas.bg_color
-        p.setPen(QPen(color, 1, Qt.SolidLine, Qt.RoundCap))
+        size = self.canvas.brush_size
+        p.setPen(QPen(color, size, Qt.SolidLine, Qt.RoundCap))
         p.drawPoint(self._last)
         p.end()
         self.canvas.update()
@@ -148,7 +149,8 @@ class PencilTool(BaseTool):
             return
         p = self.canvas.make_painter()
         color = self.canvas.fg_color if event.buttons() & Qt.LeftButton else self.canvas.bg_color
-        p.setPen(QPen(color, 1, Qt.SolidLine, Qt.RoundCap))
+        size = self.canvas.brush_size
+        p.setPen(QPen(color, size, Qt.SolidLine, Qt.RoundCap))
         p.drawLine(self._last, event.pos())
         p.end()
         self._last = event.pos()
